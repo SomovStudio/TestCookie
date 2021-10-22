@@ -6,6 +6,9 @@ public class MainForm {
     private JPanel MainPanel;
     private JMenu MenuFile;
     private JMenuItem MenuClose;
+    private JTabbedPane tabbedPane1;
+    private JMenu MenuAcrion;
+    private JMenuItem MenuGetCookie;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainForm");
@@ -23,5 +26,13 @@ public class MainForm {
                 System.exit(0);
             }
         });
+        MenuGetCookie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
+
+
 }
