@@ -11,6 +11,12 @@ public class MainForm {
     private JTabbedPane tabbedPane1;
     private JMenu MenuAcrion;
     private JMenuItem MenuGetCookie;
+    private JMenuBar MenuBar;
+    private JPanel Tab1;
+    private JList list1;
+    private JButton button1;
+    private JButton button2;
+    private JTextField textField1;
     private JTextPane textPane1;
 
     public static void main(String[] args) {
