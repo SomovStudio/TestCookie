@@ -14,10 +14,11 @@ public class MainForm {
     private JMenuBar MenuBar;
     private JPanel Tab1;
     private JList list1;
-    private JButton button1;
-    private JButton button2;
+    private JButton buttonAdd;
+    private JButton buttonDelete;
     private JTextField textField1;
     private JTextPane textPane1;
+    private JButton получитьСписокCookieButton;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainForm");
