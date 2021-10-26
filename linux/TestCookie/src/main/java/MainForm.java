@@ -13,12 +13,12 @@ public class MainForm {
     private JMenuItem MenuGetCookie;
     private JMenuBar MenuBar;
     private JPanel Tab1;
-    private JList list1;
+    private JList listLinks;
     private JButton buttonAdd;
     private JButton buttonDelete;
-    private JTextField textField1;
+    private JTextField textFieldLink;
     private JTextPane textPane1;
-    private JButton получитьСписокCookieButton;
+    private JButton buttonGetCookie;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainForm");
@@ -39,29 +39,50 @@ public class MainForm {
         MenuGetCookie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    CookieManager cookieManager = new CookieManager();
-                    CookieHandler.setDefault(cookieManager);
+                String result = "";
+                TestCookie testCookie = new TestCookie();
+                for(int i = 0; i < listLinks.getModel().getSize(); i++) {
+                    result = result + testCookie.getCookie(listLinks.getModel().getElementAt(i).toString());
 
-                    URL url = new URL("https://www.google.com/");
-                    URLConnection urlConnection = url.openConnection();
-                    urlConnection.getContent();
-
-                    CookieStore cookieStore = cookieManager.getCookieStore();
-                    String result = "";
-                    for (HttpCookie cookie : cookieStore.getCookies()) {
-                        result = result + "\n Cookie: " + cookie.getName();
-                        result = result + "\t Domain: " + cookie.getDomain();
-                        result = result + "\t Value: " + cookie.getValue();
-                        //System.out.println("\n Cookie: " + cookie.getName());
-                        //System.out.println("\t Domain: " + cookie.getDomain());
-                        //System.out.println("\t Value: " + cookie.getValue());
-                    }
-
-                    textPane1.setText(result);
-                } catch (IOException malformedURLException) {
-                    malformedURLException.printStackTrace();
                 }
+                textPane1.setText(result);
+            }
+        });
+        buttonAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listLinks.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                DefaultListModel listModel = new DefaultListModel();
+                for(int i = 0; i < listLinks.getModel().getSize(); i++) {
+                    listModel.addElement(listLinks.getModel().getElementAt(i).toString());
+                }
+                listModel.addElement(textFieldLink.getText());
+                listLinks.setModel(listModel);
+            }
+        });
+        buttonDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listLinks.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                int index = listLinks.getSelectedIndex();
+                DefaultListModel listModel = new DefaultListModel();
+                for(int i = 0; i < listLinks.getModel().getSize(); i++) {
+                    if(index == i)continue;
+                    listModel.addElement(listLinks.getModel().getElementAt(i).toString());
+                }
+                listLinks.setModel(listModel);
+            }
+        });
+        buttonGetCookie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result = "";
+                TestCookie testCookie = new TestCookie();
+                for(int i = 0; i < listLinks.getModel().getSize(); i++) {
+                    result = result + testCookie.getCookie(listLinks.getModel().getElementAt(i).toString());
+
+                }
+                textPane1.setText(result);
             }
         });
     }

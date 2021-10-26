@@ -17,8 +17,9 @@ public class TestCookie {
 
             for (HttpCookie cookie : cookieStore.getCookies()) {
                 result = result + "\n Cookie: " + cookie.getName();
-                result = result + "\t Domain: " + cookie.getDomain();
-                result = result + "\t Value: " + cookie.getValue();
+                result = result + "\n Domain: " + cookie.getDomain();
+                result = result + "\n Value: " + cookie.getValue();
+                result = result + "\n";
             }
 
         } catch (IOException malformedURLException) {
