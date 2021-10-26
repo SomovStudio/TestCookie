@@ -19,6 +19,8 @@ public class MainForm {
     private JTextField textFieldLink;
     private JTextPane textPane1;
     private JButton buttonGetCookie;
+    private JMenu MenuHelp;
+    private JMenuItem MenuAbout;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainForm");
@@ -83,6 +85,22 @@ public class MainForm {
 
                 }
                 textPane1.setText(result);
+            }
+        });
+        MenuAbout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String context = "Программа: TestCookie";
+                context += System.getProperty("line.separator") + "----------------------------------------------------------------------";
+                context += System.getProperty("line.separator") + "Разработчик: Сомов Евгений Павлович";
+                context += System.getProperty("line.separator") + "Сайт: https://somovstudio.github.io";
+                context += System.getProperty("line.separator") + "Почта: somov.studio@gmail.com";
+                context += System.getProperty("line.separator") + "Дата последнего обновления: 26.10.2021";
+                context += System.getProperty("line.separator") + "Версия: 1.0";
+                context += System.getProperty("line.separator") + "Лицензия: GNU";
+                context += System.getProperty("line.separator") + "----------------------------------------------------------------------";
+                context += System.getProperty("line.separator") + "© Somov Evgeniy, 2021. All Rights Reserved.";
+                JOptionPane.showMessageDialog(null, context);
             }
         });
     }
