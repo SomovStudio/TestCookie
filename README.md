@@ -1,9 +1,20 @@
 # TestCookie
-Test Cookie
+Программа для тестирования Cookie
+<br>
+Скачать архив: https://github.com/SomovStudio/TestCookie/archive/refs/tags/1.0.zip
 
-Куки - Java
-https://metanit.com/java/javaee/4.9.php
+<hr>
 
-How can I get all cookies from a website using Java 
-(Как я могу получить все файлы cookie с веб-сайта с помощью Java)
-https://stackoverflow.com/questions/60794498/how-can-i-get-all-cookies-from-a-website-using-java
+<p align="center">
+  <img src="https://github.com/SomovStudio/somovstudio.github.io/blob/master/img/projects/test_cookie/image.jpg">
+</p>
+
+Системные требования: 
+<br>
+<ul>
+	<li>Windows 7, 8, 10 | Linux (Ubuntu, Mint, и др.)</li>
+	<li><a href="https://www.oracle.com/java/technologies/javase-jre8-downloads.html" target="_blank">JRE 8 (Java SE Runtime Environment)</a></li>
+	<li><a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank">JDK 8 (Java SE Development Kit)</a></li>
+</ul>
+
+
