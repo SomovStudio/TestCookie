@@ -110,13 +110,14 @@ namespace TestCookie
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //AboutForm about = new AboutForm();
-            //about.ShowDialog();
+            TestSitemap.AboutForm about = new TestSitemap.AboutForm();
+            about.ShowDialog();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-
+            TestSitemap.AboutForm about = new TestSitemap.AboutForm();
+            about.ShowDialog();
         }
     }
 }
