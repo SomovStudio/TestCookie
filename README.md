@@ -16,7 +16,7 @@
 	<li>.NET Framework 2</li>
 </ul>
 
-<br><br>
+<br>
 
 Системные требования для Linux (Ubuntu, Mint, и др.): 
 <br>
