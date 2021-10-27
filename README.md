@@ -12,8 +12,8 @@
 Системные требования для Windows 7, 8, 10: 
 <br>
 <ul>
-	<li>Windows 7, 8, 10 | Linux (Ubuntu, Mint, и др.)</li>
 	<li>.NET Framework 2</li>
+	<li><a href="https://www.microsoft.com/ru-ru/download/details.aspx?id=22" target="_blank">.NET Framework 3.5 SP1</a></li>
 </ul>
 
 <br>
