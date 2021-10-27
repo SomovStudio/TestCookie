@@ -37,6 +37,7 @@ namespace TestCookie
                     textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Cookie: " + cookie.Name;
                     textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Value: " + cookie.Value;
                     textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine;
+                    textBoxListCookie.Update();
                 }
                 myCall.Abort();
             }
@@ -64,18 +65,58 @@ namespace TestCookie
             listBoxURLs.Items.RemoveAt(listBoxURLs.SelectedIndex);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            listBoxURLs.Items.Clear();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabelInfo.Text = "Процесс запущен...";
             textBoxListCookie.Text = "";
             foreach (string url in listBoxURLs.Items)
             {
                 getCookie(url);
             }
+            toolStripStatusLabelInfo.Text = "...";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void получитьСписокCookieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listBoxURLs.Items.Clear();
+            toolStripStatusLabelInfo.Text = "Процесс запущен...";
+            textBoxListCookie.Text = "";
+            foreach (string url in listBoxURLs.Items)
+            {
+                getCookie(url);
+            }
+            toolStripStatusLabelInfo.Text = "...";
+        }
+        
+        private void закрытьПрограммуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabelInfo.Text = "Процесс запущен...";
+            textBoxListCookie.Text = "";
+            foreach (string url in listBoxURLs.Items)
+            {
+                getCookie(url);
+            }
+            toolStripStatusLabelInfo.Text = "...";
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //AboutForm about = new AboutForm();
+            //about.ShowDialog();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
