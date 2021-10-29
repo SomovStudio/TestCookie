@@ -23,6 +23,9 @@ namespace TestCookie
 
             try
             {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 
                 HttpWebRequest myCall = (HttpWebRequest)WebRequest.Create(url);
                 myCall.CookieContainer = new CookieContainer();
@@ -30,20 +33,30 @@ namespace TestCookie
                 HttpWebResponse response = (HttpWebResponse)myCall.GetResponse();
                 myCall.AllowAutoRedirect = true;
 
-                foreach (Cookie cookie in response.Cookies)
+                if (response.Cookies.Count > 0)
+                {
+                    foreach (Cookie cookie in response.Cookies)
+                    {
+                        textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "URL: " + url;
+                        textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Domain: " + cookie.Domain;
+                        textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Cookie: " + cookie.Name;
+                        textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Value: " + cookie.Value;
+                        textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine;
+                        textBoxListCookie.Update();
+                    }
+                }
+                else
                 {
                     textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "URL: " + url;
-                    textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Domain: " + cookie.Domain;
-                    textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Cookie: " + cookie.Name;
-                    textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Value: " + cookie.Value;
-                    textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine;
-                    textBoxListCookie.Update();
+                    textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Получены: " + response.Cookies.Count + " cookie" + Environment.NewLine;
                 }
+                
                 myCall.Abort();
             }
             catch (Exception ex)
             {
-                textBoxListCookie.Text = ex.Message;
+                textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "URL: " + url;
+                textBoxListCookie.Text = textBoxListCookie.Text + Environment.NewLine + "Ошибка: " + ex.Message + Environment.NewLine;
             }
         }
 
