@@ -12,7 +12,7 @@
 Системные требования для Windows 7, 8, 10: 
 <br>
 <ul>
-	<li>.NET Framework 4.5</li>
+	<li><a href="https://www.microsoft.com/ru-ru/download/details.aspx?id=30653" target="_blank">.NET Framework 4.5</a></li>
 	<li><a href="https://dotnet.microsoft.com/download/dotnet-framework" target="_blank">.NET Framework</a></li>
 </ul>
 
