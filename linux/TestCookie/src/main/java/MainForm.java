@@ -60,6 +60,7 @@ public class MainForm {
                 }
                 listModel.addElement(textFieldLink.getText());
                 listLinks.setModel(listModel);
+                textFieldLink.setText("");
             }
         });
         buttonDelete.addActionListener(new ActionListener() {
