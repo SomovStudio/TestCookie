@@ -1,39 +1,48 @@
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.*;
 import java.net.*;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 
 public class TestCookie {
 
     public String getCookie(String linkURL) {
         String result = "";
 
-        /*
+        // Устанавливаем протокол
+        // https://coderoad.ru/39157422/%D0%9A%D0%B0%D0%BA-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C-TLS-1-2-%D0%B2-Java-7
+        System.setProperty("https.protocols", "SSLv3,TLSv1,TLSv1.1,TLSv1.2");
+        //System.getProperties().setProperty("https.protocols", "TLSv1.2,TLSv1.1,TLSv1,SSLv3");
+
+        // Разрешение ненадежных сертификатов SSL
+        TrustManager[] trustAllCerts = new TrustManager[]{
+                new X509TrustManager() {
+                    public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                        return null;
+                    }
+                    public void checkClientTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
+                    public void checkServerTrusted(
+                            java.security.cert.X509Certificate[] certs, String authType) {
+                    }
+                }
+        };
+
         try {
-            SSLContext context = null;
-            context = SSLContext.getInstance("TLSv1.2");
-            context.init(null,null,null);
-            SSLContext.setDefault(context);
-            SSLSocketFactory factory = (SSLSocketFactory)context.getSocketFactory();
-            SSLSocket socket = (SSLSocket)factory.createSocket();
-            String[] protocols = socket.getEnabledProtocols();
-        } catch (NoSuchAlgorithmException | IOException e) {
-            e.printStackTrace();
+            SSLContext sc = SSLContext.getInstance("SSL");
+            //SSLContext sc = SSLContext.getInstance("TLSv1.2");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
             result = e.getMessage();
             result = result + "\n";
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-            result = e.getMessage();
-            result = result + "\n";
+            return result;
         }
-        */
 
+        // Чтение Cookie
         try {
-            System.setProperty("https.protocols", "SSLv3,TLSv1,TLSv1.1,TLSv1.2");
-
             CookieManager cookieManager = new CookieManager();
             CookieHandler.setDefault(cookieManager);
 
@@ -43,10 +52,17 @@ public class TestCookie {
 
             CookieStore cookieStore = cookieManager.getCookieStore();
 
-            for (HttpCookie cookie : cookieStore.getCookies()) {
-                result = result + "\n Cookie: " + cookie.getName();
-                result = result + "\n Domain: " + cookie.getDomain();
-                result = result + "\n Value: " + cookie.getValue();
+            if(cookieStore.getCookies().size() > 0){
+                for (HttpCookie cookie : cookieStore.getCookies()) {
+                    result = result + "\n URL: " + linkURL;
+                    result = result + "\n Domain: " + cookie.getDomain();
+                    result = result + "\n Cookie: " + cookie.getName();
+                    result = result + "\n Value: " + cookie.getValue();
+                    result = result + "\n";
+                }
+            }else{
+                result = result + "\n URL: " + linkURL;
+                result = result + "\n Получено: 0 cookie";
                 result = result + "\n";
             }
 
