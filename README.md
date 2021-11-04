@@ -1,7 +1,7 @@
 # TestCookie
 Программа для тестирования Cookie
 <br>
-Скачать архив: https://github.com/SomovStudio/TestCookie/archive/refs/tags/1.0.0.zip
+Скачать архив: https://github.com/SomovStudio/TestCookie/archive/refs/tags/1.0.1.zip
 
 <hr>
 
