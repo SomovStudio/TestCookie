@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="TestCookie:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/TestCookie_jar</output-path>
-    <root id="archive" name="TestCookie.jar">
-      <element id="module-output" name="TestCookie" />
-    </root>
-  </artifact>
-</component>
