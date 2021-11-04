@@ -96,8 +96,8 @@ public class MainForm {
                 context += System.getProperty("line.separator") + "Разработчик: Сомов Евгений Павлович";
                 context += System.getProperty("line.separator") + "Сайт: https://somovstudio.github.io";
                 context += System.getProperty("line.separator") + "Почта: somov.studio@gmail.com";
-                context += System.getProperty("line.separator") + "Дата последнего обновления: 26.10.2021";
-                context += System.getProperty("line.separator") + "Версия: 1.0";
+                context += System.getProperty("line.separator") + "Дата последнего обновления: 04.11.2021";
+                context += System.getProperty("line.separator") + "Версия: 1.0.1";
                 context += System.getProperty("line.separator") + "Лицензия: GNU";
                 context += System.getProperty("line.separator") + "----------------------------------------------------------------------";
                 context += System.getProperty("line.separator") + "© Somov Evgeniy, 2021. All Rights Reserved.";

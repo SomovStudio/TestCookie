@@ -36,6 +36,7 @@ public class TestCookie {
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
         } catch (Exception e) {
+            result = result + "\n URL: " + linkURL;
             result = e.getMessage();
             result = result + "\n";
             return result;
@@ -43,6 +44,7 @@ public class TestCookie {
 
         // Чтение Cookie
         try {
+
             CookieManager cookieManager = new CookieManager();
             CookieHandler.setDefault(cookieManager);
 
@@ -68,6 +70,7 @@ public class TestCookie {
 
         } catch (IOException malformedURLException) {
             malformedURLException.printStackTrace();
+            result = result + "\n URL: " + linkURL;
             result = malformedURLException.getMessage();
             result = result + "\n";
         }
